@@ -1,0 +1,17 @@
+version: "3"
+services:
+  application-example:
+    image: application-example:1.0
+    container_name: "application-example"
+    ports:
+      - 8085:8085
+  rabbitmq-example:
+    image: rabbitmq:3-management
+    container_name: "rabbitmq-example"
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      AMQP_URL: 'amqp://rabbitmq?connection_attempts=5&retry_delay=5'
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
